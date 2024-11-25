@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/web/cadastros/maquina/maquinaCadastrar.jsp</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/controller/Maquinas/MaquinaCadastrar.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/controller/Maquinas/MaquinaCarregar.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/controller/Maquinas/MaquinaExcluir.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/web/cadastros/maquina/maquina.jsp</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/controller/Maquinas/MaquinaBuscarPorLaboratorio.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/controller/Maquinas/MaquinaNovo.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/web/cadastros/laboratorio/laboratorioCadastrar.jsp</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/utils/SingleConnection.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/controller/Maquinas/MaquinaListar.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/model/Maquina.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/dao/MaquinaDAO.java</file>
+            <file>file:/home/finall/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/utils/bdhelp.sql</file>
+        </group>
+    </open-files>
+</project-private>
