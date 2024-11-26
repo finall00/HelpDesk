@@ -79,24 +79,59 @@ public class LaboratorioDAO implements GenericDAO {
         }
     }
 
-    @Override
+//    @Override
+//    public Boolean excluir(int numero) {
+//        int idLab = numero;
+//        PreparedStatement stmt = null;
+//
+//        String sql = "delete from laboratorio where idlaboratorio = ?";
+//        try {
+//            stmt = conexao.prepareStatement(sql);
+//            stmt.setInt(1, idLab);
+//            stmt.execute();
+//            conexao.commit();
+//            return true;
+//        } catch (Exception ex) {
+//            System.out.println("Problemas ao excluir o Laboratorio! Erro" + ex.getMessage());
+//            try {
+//                conexao.rollback();
+//            } catch (SQLException e) {
+//                e.printStackTrace();
+//            }
+//            return false;
+//        }
+//    }
+    
+    
+      @Override
     public Boolean excluir(int numero) {
-        int idLab = numero;
-        PreparedStatement stmt = null;
+            PreparedStatement stmt = null;
 
-        String sql = "delete from laboratorio where idlaboratorio = ?";
-        try {
+          try {
+            LaboratorioDAO oLaboraorioDAO = new LaboratorioDAO();
+            Laboratorio oLaboratorio = (Laboratorio) oLaboraorioDAO.carregar(numero);
+            String situacao = "A";
+            if(oLaboratorio.getStatus().equals(situacao)){
+                situacao ="I";
+            }else{
+                situacao="A";
+            }
+            
+            String sql = "update laboratorio set status=? where idlaboratorio = ?";
             stmt = conexao.prepareStatement(sql);
-            stmt.setInt(1, idLab);
+            stmt.setString(1,situacao);
+            stmt.setInt(2,oLaboratorio.getIdLaboratorio());
             stmt.execute();
             conexao.commit();
             return true;
-        } catch (Exception ex) {
-            System.out.println("Problemas ao excluir o Laboratorio! Erro" + ex.getMessage());
+        } catch (Exception e) {
             try {
-                conexao.rollback();
-            } catch (SQLException e) {
+                System.out.println("Problemas ao excluir laboratorio"+e.getMessage());
                 e.printStackTrace();
+                conexao.rollback();
+            } catch (SQLException ex) {
+                System.out.println("Erro no rollback "+ex.getMessage());
+                ex.printStackTrace();
             }
             return false;
         }

@@ -12,7 +12,7 @@
                 <th align="left">Numero Sala</th>
                 <th align="left">Quantidade de Computadores</th>
                 <th>Status</th>
-                <th align="right"></th>
+                
                 <th align="right"></th>
                 <th align="right"></th>
             </tr>
@@ -22,12 +22,16 @@
                 <tr>
                     <td align="left">${laboratorio.idLaboratorio}</td>
                     <td align="left">LAB ${laboratorio.numeroSala}</td>
-                    <td align="left"> ${laboratorio.qtnMaquinas}</td>
-                    <td align="left">${laboratorio.status == 'A' ? 'Ativo' : 'Inativo'}</td>
-                    
+                    <td align="left"> ${laboratorio.qtnMaquinas}</td> 
                     <td align="center">
-                        <a href="${pageContext.request.contextPath}/LaboratorioExcluir?idLaboratorio=${laboratorio.idLaboratorio}">Excluir</a>
-                    </td>
+                            <a href="${pageContext.request.contextPath}/LaboratorioExcluir?idLaboratorio=${laboratorio.idLaboratorio}">
+                                <button class="btn btn-group-lg
+                                    <c:out value="${laboratorio.status == 'A' ? 'btn-danger' :'btn-success'}"/>"
+                                >
+                                    <c:out value="${laboratorio.status  == 'A' ? 'Inativar' :'Ativar'}"/>
+                                </button>
+                            </a>
+                        </td>
                      <td align="center">
                         <a href="${pageContext.request.contextPath}/LaboratorioCarregar?idLaboratorio=${laboratorio.idLaboratorio}">Alterar</a>
                     </td>
