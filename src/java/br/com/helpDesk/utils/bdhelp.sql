@@ -8,10 +8,10 @@ create table laboratorio(
 
 create table maquina(
     idmaquina serial primary key,
-    numeroMarquina  int,
+    numeroMaquina  int,
     sistemaOperacional varchar(30),
     idlaboratorio int not null, 
-    constraint  fk_laboratorio foreing key (idlaboratorio) references laboratorio(idlaboratorio)
+    constraint  fk_laboratorio foreign key (idlaboratorio) references laboratorio(idlaboratorio)
     
 );
 
