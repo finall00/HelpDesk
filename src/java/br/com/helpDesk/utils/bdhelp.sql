@@ -17,7 +17,7 @@ create table maquina(
 
 
 insert into laboratorio(numeroSala, qtnMaquinas, status) values (10, 5, 'A');
-insert into maquina(numeromaquina, sistemaoperacional, idlaboratorio) values (?,?,?);
+insert into maquina(numeromaquina, sistemaoperacional, idlaboratorio) values (04,'ubuntu',1);
 
 
 create table pessoa(
@@ -31,7 +31,7 @@ select * from pessoa;
 
 create table docente(
 	idDocente serial primary key,
-	numeroMatricula int not null,
+	numeroMatricula int not null,    
 	situacao varchar(1) not null,
 	fkPessoa integer unique,
 	constraint fk_pessoa foreign key (fkPessoa) references pessoa(idPessoa)
@@ -39,3 +39,19 @@ create table docente(
 
 insert into docente(numeroMatricula,situacao,fkPessoa) values (10293939,'A',1);
 select * from docente;
+
+create table ticket(
+	idticket serial primary key,
+	descricao varchar(500) not null,
+	imagem text,
+	idlaboratorio integer,
+	iddocente integer,
+	datacriacao date not null,
+	dataencerramento date,
+	status varchar(1) not null,
+	constraint fkLaboratorio foreign key (idlaboratorio) references laboratorio(idlaboratorio),
+	constraint fkDocente foreign key (iddocente) references docente(iddocente)
+);
+
+select * from ticket; 
+insert into ticket (descricao,idlaboratorio,iddocente,datacriacao,dataencerramento,status) values ('o pc morreu aqui',1,1,'2024-02-12','2024-03-23','A');

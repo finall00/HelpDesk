@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class SingleConnection {
     
     private static Connection conexao = null;
-    private static String servidor = "jdbc:postgresql://172.18.0.1:15432/morra?autoReconnect=true";
+    private static String servidor = "jdbc:postgresql://172.18.0.1:15432/morra2?autoReconnect=true";
     private static String usuario = "postgres";
     private static String senha = "123456";
     

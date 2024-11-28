@@ -5,6 +5,7 @@
         <group>
             <file>file:/home/olirenan/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/model/Maquina.java</file>
             <file>file:/home/olirenan/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/model/Laboratorio.java</file>
+            <file>file:/home/olirenan/NetBeansProjects/HelpDesk/web/cadastros/laboratorio/laboratorio.jsp</file>
             <file>file:/home/olirenan/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/dao/LaboratorioDAO.java</file>
             <file>file:/home/olirenan/NetBeansProjects/HelpDesk/src/java/br/com/helpDesk/utils/SingleConnection.java</file>
             <file>file:/home/olirenan/NetBeansProjects/HelpDesk/web/cadastros/docente/docente.jsp</file>
