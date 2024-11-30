@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Tickets</h1>
          
-    <p class="mb-4">Formulario de Cadastro</p>
+    <p class="mb-4">Formulário de Cadastro</p>
     <a class="btn btn-secondary mb-4" href="${pageContext.request.contextPath}/TicketListar">
         <i class="fas fa-undo-alt"></i>
         <strong>Voltar</strong>
@@ -31,7 +31,6 @@
                     </div>
                 </div>
             </div>
-
             <form name="cadastrarticket" action="TicketCadastrar" method="POST">
                 <div class="card">
                     <div class="card-body">
@@ -41,16 +40,12 @@
                                 <input type="text" class="form-control" name="idticket" id="idticket" value="${ticket.idTicket}" readonly="readonly"/>
                             </div>
                         </div>
-
-
                         <div class="form-group row">
                             <label for="descTicket" class="col-sm-2 col-form-label">descricao do Problema</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control" name="descricao" id="descricao" value="${ticket.descricao}" required/>
                             </div>
                         </div>
-
-
                         <div class="form-group row">
                             <label for="idlaboratorio" class="col-sm-2 col-form-label">Laboratorio:</label>
                             <div class="col-sm-10">
@@ -64,40 +59,36 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="form-group row">
                             <label for="iddocente" class="col-sm-2 col-form-label">Docente</label>
                             <div class="col-sm-10">
                                 <select class="form-control" name="iddocente" id="iddocente" required>
                                     <option value="">Selecione</option>
                                     <c:forEach var="docente" items="${docentes}">
-                                        <option value="${docente.idDocente}">
+                                        <option value="${docente.idDocente}" ${ticket.docente.idDocente == docente.idDocente ? "selected" : ""}>
                                             ${docente.nomePessoa}
                                         </option>
                                     </c:forEach>
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <div class="form-group row" style="display: none;">
                             <label for="idstatus" class="col-sm-2 col-form-label">status</label>
-                            <select name="status" id="status">
+                            <select name="status" id="status" ${ticket.status == 'I' ? 'disabled': ''}>
                                 <option value="A" ${ticket.status == 'A' ? 'selected' : ''}>Ativo</option>
                                 <option value="I" ${ticket.status == 'I' ? 'selected' : ''}>Inativo</option>
                             </select>
                         </div>
                     </div>
-
                     <div class="card-footer text-center">
-                        <button type="submit" class="btn btn-primary" id="cadastrar" onclick="gravarDados()"> Cadastrar </button>
+                        <button type="submit" class="btn btn-primary" id="cadastrar">Cadastrar</button>
                         <button type="reset" class="btn btn-secondary" id="limpar">Limpar</button>
                     </div>
                 </div>
-
             </form>
         </div>
     </div>
 </div>
-
 <style type="text/css">
     .inputfile {
         /* visibility: hidden etc. wont work */
@@ -128,42 +119,50 @@
         box-shadow: 0px 0px 3px rgba(0,0,0,0.06);
     }
 </style>
-
 <script>  
-    console.log("aaaaaaaaaaaaaa")
-    function gravarDados() {
-        console.log("Gravando dados ....");
-        var target = document.getElementById("target").src;
-        $.ajax({
-            type: 'post',
-            url: 'TicketCadastrar',
-            data: {
-                idticket :$('#idticket').val(),
-                descricao :$('#descricao').val(),
-                idlaboratorio: $('#idlaboratorio').val(),
-                iddocente :$('#iddocente').val(),
-                status :$('#status').val(),
-                imagem: target
-            },
-            success:
-                    function (data) {
-                        console.log("reposta servlet->");
-                        console.log(data);
-                        if (data == 1) {
-                           console.log("enviou os dados").then(function(){
-                                window.location.href = "${pageContext.request.contextPath}/TicketListar";
-                            })
-                        } else {
-                            console.log("nao enviou os dados").then(function(){
-                                window.location.href = "${pageContext.request.contextPath}/TicketListar";
-                            })
-                        }
-                    },
-            error:
-                    function (data) {
-                        window.location.href = "${pageContext.request.contextPath}/TicketListar";
-                    }
-        });
-    }
+   document.addEventListener("DOMContentLoaded", function () {
+    const form = document.querySelector("form[name='cadastrarticket']");
+
+    form.addEventListener("submit", function (event) {
+        event.preventDefault(); // Impede o envio padrão do formulário
+        gravarDados();
+    });
+});
+
+
+function gravarDados() {
+    console.log("Gravando dados ....");
+    const form = document.querySelector("form[name='cadastrarticket']");
+    
+    const data = {
+        idticket: document.getElementById('idticket').value,
+        descricao: document.getElementById('descricao').value,
+        idlaboratorio: document.getElementById('idlaboratorio').value,
+        iddocente: document.getElementById('iddocente').value,
+        status: document.getElementById('status').value,
+        imagem: document.getElementById('target').src,
+    };
+
+    $.ajax({
+        type: 'post',
+        url: 'TicketCadastrar',
+        data: data,
+        success: function (response) {
+            console.log("Resposta do servlet ->", response);
+            if (response == 1) {
+                console.log("Dados enviados com sucesso");
+                window.location.href = `${pageContext.request.contextPath}/TicketListar`;
+            } else {
+                console.log("Falha ao enviar os dados");
+                window.location.href = `${pageContext.request.contextPath}/TicketListar`;
+            }
+        },
+        error: function () {
+            console.error("Erro ao enviar os dados");
+            window.location.href = `${pageContext.request.contextPath}/TicketListar`;
+        }
+    });
+}
+
 </script>   
 <jsp:include page="/footer.jsp"/>

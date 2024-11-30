@@ -3,8 +3,10 @@ package br.com.helpDesk.dao;
 import br.com.helpDesk.model.Docente;
 import br.com.helpDesk.model.Laboratorio;
 import br.com.helpDesk.model.Ticket;
+import br.com.helpDesk.utils.Conversao;
 import br.com.helpDesk.utils.SingleConnection;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.util.List;
 import java.sql.SQLException;
@@ -67,7 +69,7 @@ public class TicketDAO implements GenericDAO{
     public Boolean alterar(Object objeto) {
         Ticket oTicket = (Ticket) objeto;
         PreparedStatement stmt = null;
-        String sql = "update ticket set descricao=?,imagem=?,idlaboratorio=?,iddocente=?,datacriacao=?,status=? where idticket=?";
+        String sql = "update ticket set descricao=?,imagem=?,idlaboratorio=?,iddocente=?,status=? where idticket=?";
         
         try {
             stmt =  conexao.prepareStatement(sql);
@@ -75,9 +77,8 @@ public class TicketDAO implements GenericDAO{
             stmt.setString(2, oTicket.getImagem());
             stmt.setInt(3, oTicket.getLaboratorio().getIdLaboratorio());
             stmt.setInt(4, oTicket.getDocente().getIdDocente());
-            stmt.setDate(5, new java.sql.Date(oTicket.getDataCriação().getTime()));
-            stmt.setString(6, oTicket.getDescricao());
-            stmt.setInt(7, oTicket.getIdTicket());
+            stmt.setString(5, oTicket.getStatus());
+            stmt.setInt(6, oTicket.getIdTicket());
             stmt.execute();
             conexao.commit();
             return true;
@@ -108,10 +109,11 @@ public class TicketDAO implements GenericDAO{
                 status="A";
             }
             
-            String sql = "update ticket set status=? where idticket = ?";
+            String sql = "update ticket set status=?, dataencerramento=? where idticket = ?";
             stmt = conexao.prepareStatement(sql);
             stmt.setString(1,status);
-            stmt.setInt(2,oTicket.getIdTicket());
+            stmt.setDate(2, new java.sql.Date(Conversao.dataAtual().getTime()));
+            stmt.setInt(3,oTicket.getIdTicket());
             stmt.execute();
             conexao.commit();
             return true;

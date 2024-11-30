@@ -6,4 +6,5 @@
 <a href="${pageContext.request.contextPath}/LaboratorioListar">Laboratorio</a>
 <a href="${pageContext.request.contextPath}/MaquinaListar">Maquina</a>
 <a href="${pageContext.request.contextPath}/TicketListar">ticket</a>
+<a href="${pageContext.request.contextPath}/DocenteListar">docente</a>
 <hr>

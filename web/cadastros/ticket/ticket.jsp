@@ -34,16 +34,22 @@
                 <td align="left">${ticket.status}</td>
                 <td align="left"><img src="${ticket.imagem}" height="100" width="200" /></td>
                 <td align="center">
-                            <a href="${pageContext.request.contextPath}/TicketExcluir?idTicket=${ticket.idTicket}">
-                                <button class="btn btn-group-lg
-                                    <c:out value="${ticket.status == 'A' ? 'btn-danger' :'btn-success'}"/>"
+                    <a href="${pageContext.request.contextPath}/TicketExcluir?idTicket=${ticket.idTicket}">
+                        <button class="btn btn-group-lg 
+                                <c:out value="${ticket.status == 'A' ? 'btn-danger' :'btn-success'}"/>"
+                                ${ticket.status == 'I' ? 'disabled' : ''}
                                 >
-                                    <c:out value="${ticket.status  == 'A' ? 'Inativar' :'Ativar'}"/>
-                                </button>
-                            </a>
-                        </td>
+                            <c:out value="${ticket.status  == 'A' ? 'Inativar' :'Ticket encerrado'}"/>
+                        </button>
+                    </a>
+                </td>
+                <td align="center">
+                    <a href="${pageContext.request.contextPath}/TicketCarregar?idticket=${ticket.idTicket}"> 
+                        <button class="btn btn-group-lg btn-success"/>Alterar</button>
+                    </a>
+                </td>
             </tr>
-            
+
         </c:forEach>
         </tbody>
     </table> 
@@ -80,7 +86,7 @@
         });
     });
 
-     function deletar(codigo){
+    function deletar(codigo) {
         var id = codigo;
         console.log(codigo);
         Swal.fire({
@@ -97,38 +103,39 @@
                 $.ajax({
                     type: 'post',
                     url: '${pageContext.request.contextPath}/DespesaExcluir',
-                    data:{
+                    data: {
                         idDespesa: id
                     },
                     success:
-                        function(data){
-                            if(data == 1){
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'success',
-                                    title: 'Sucesso',
-                                    text: 'Despesa excluída com sucesso!',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                })
-                            } else {
-                                Swal.fire({
-                                    position: 'top-end',
-                                    icon: 'error',
-                                    title: 'Erro',
-                                    text: 'Não foi possível excluir a despesa!',
-                                    showConfirmButton: false,
-                                    timer: 2000
-                                })
-                            }
-                            window.location.href = "${pageContext.request.contextPath}/DespesaListar";
-                        },
+                            function (data) {
+                                if (data == 1) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'Sucesso',
+                                        text: 'Despesa excluída com sucesso!',
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                                } else {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'error',
+                                        title: 'Erro',
+                                        text: 'Não foi possível excluir a despesa!',
+                                        showConfirmButton: false,
+                                        timer: 2000
+                                    })
+                                }
+                                window.location.href = "${pageContext.request.contextPath}/DespesaListar";
+                            },
                     error:
-                        function(data){
-                            window.location.href = "${pageContext.request.contextPath}/DespesaListar";
-                        }
+                            function (data) {
+                                window.location.href = "${pageContext.request.contextPath}/DespesaListar";
+                            }
                 });
-            };
+            }
+            ;
         });
     }
 </script>
