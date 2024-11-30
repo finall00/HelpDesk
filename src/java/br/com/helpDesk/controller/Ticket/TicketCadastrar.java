@@ -29,8 +29,8 @@ public class TicketCadastrar extends HttpServlet {
             oTicket.setLaboratorio(new Laboratorio(idLaboratorio,0,0,""));
             oTicket.setDocente(new Docente(idDocente, 0, "", 0, "", ""));     
             oTicket.setImagem(request.getParameter("imagem"));
-            String status = request.getParameter("status");
-            
+            oTicket.setStatus(request.getParameter("status"));
+            oTicket.setDataCriação(Conversao.dataAtual());
             TicketDAO oTicketDAO = new TicketDAO();
             
             if(oTicketDAO.cadastrar(oTicket)){

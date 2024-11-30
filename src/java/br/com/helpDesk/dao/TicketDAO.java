@@ -46,7 +46,7 @@ public class TicketDAO implements GenericDAO{
             stmt.setInt(3, oTicket.getLaboratorio().getIdLaboratorio());
             stmt.setInt(4, oTicket.getDocente().getIdDocente());
             stmt.setDate(5, new java.sql.Date(oTicket.getDataCriação().getTime()));
-            stmt.setString(6, oTicket.getDescricao());
+            stmt.setString(6, oTicket.getStatus());
             stmt.execute();
             conexao.commit();
             return true;

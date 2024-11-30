@@ -49,7 +49,7 @@
     </table> 
 </div>
 <div align="center">
-    <a class="btn btn-group-lg btn-dark" href="${pageContext.request.contextPath}/DespesaNovo">Novo</a>
+    <a class="btn btn-group-lg btn-dark" href="${pageContext.request.contextPath}/TicketNovo">Novo</a>
     <a href="index.jsp" class="btn btn-group-lg btn-secondary">Voltar à página Inicial</a>
 </div>
 

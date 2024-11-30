@@ -230,5 +230,32 @@ function validarCPF(cpf) {
 }
 
 
+//isso fica aqui pq o navgador nao recoonhce o cabecario
+
+ function uploadFile() {
+        //pega o componente html image 
+        var target = document.getElementById("target");
+        //limpa o image
+        target.src = "";
+        //abre a janela para seleção do arquivo.
+        var file = document.querySelector("input[type='file']").files[0];
+        //verifica se o arquivo existe
+        if (file) {
+            console.log("File input triggered");
+            console.log(file);
+
+            //faz a leitura do arquivo da imagem
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = function () {
+                //atribui a imagem do arquivo ao componente html image
+                target.src = reader.result;
+            };
+        } else {
+            target.src = "";
+        }
+    }
+
+
 
 
