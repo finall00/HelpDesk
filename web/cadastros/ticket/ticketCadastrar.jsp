@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <h1 class="h3 mb-2 text-gray-800">Tickets</h1>
          
-    <p class="mb-4">Formulário de Cadastro</p>
+    <p class="mb-4">Formulario de Cadastro</p>
     <a class="btn btn-secondary mb-4" href="${pageContext.request.contextPath}/TicketListar">
         <i class="fas fa-undo-alt"></i>
         <strong>Voltar</strong>
@@ -138,11 +138,11 @@
             type: 'post',
             url: 'TicketCadastrar',
             data: {
-                idticket $('#idticket').val(),
-                descricao $('#descricao').val(),
-                idlaboratorio $('#idlaboratorio').val(),
-                iddocente $('#iddocente').val(),
-                status $('#status').val(),
+                idticket :$('#idticket').val(),
+                descricao :$('#descricao').val(),
+                idlaboratorio: $('#idlaboratorio').val(),
+                iddocente :$('#iddocente').val(),
+                status :$('#status').val(),
                 imagem: target
             },
             success:

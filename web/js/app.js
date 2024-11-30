@@ -32,6 +32,8 @@ $(document).ready(function(){
     });
 });
 
+
+
 //alterar a mascara do cpf/cnpj de acordo com o
 //tamanho da informação
 function trocaMascaraCpfCnpj(cpfCnpj)
@@ -232,6 +234,9 @@ function validarCPF(cpf) {
 
 //isso fica aqui pq o navgador nao recoonhce o cabecario
 
+
+
+
  function uploadFile() {
         //pega o componente html image 
         var target = document.getElementById("target");
@@ -250,6 +255,7 @@ function validarCPF(cpf) {
             reader.onloadend = function () {
                 //atribui a imagem do arquivo ao componente html image
                 target.src = reader.result;
+                console.log(target.src);
             };
         } else {
             target.src = "";
@@ -257,5 +263,5 @@ function validarCPF(cpf) {
     }
 
 
-
+        
 
