@@ -24,7 +24,8 @@ public class MaquinaCarregar extends HttpServlet {
             request.setAttribute("maquina", oMaquinaDAO.carregar(idMaquina));
             LaboratorioDAO oLaboratorioDAO = new LaboratorioDAO();
             request.setAttribute("laboratorios", oLaboratorioDAO.listar());
-            request.getRequestDispatcher("/cadastros/maquina/maquinaCadastrar.jsp").forward(request, response);
+             request.setAttribute("showModal", "true");
+            request.getRequestDispatcher("/cadastros/maquina/maquina.jsp").forward(request, response);
         } catch (Exception ex){
             System.out.println("Erro carrregar maquina "+ex.getMessage());
             ex.printStackTrace();

@@ -5,18 +5,22 @@
 <jsp:include page="/menu.jsp"/>
 
 <h1 class="h3 mb-4 p-2 text-gray-800 text-center">Cadastro de Laboratorio</h1>
+<a href="index.jsp" class="btn btn-success mb-4"><i class="fas fa-home fa-fw"></i> Voltar à página Inicial</a>
 <div class="d-flex justify-content-between mb-4">
     <p class="p-2 h4">Laboratorios</p>
     <!--<a href="${pageContext.request.contextPath}/LaboratorioNovo" class="btn btn-primary">Novo</a>-->
     <!--<a href="${pageContext.request.contextPath}/LaboratorioNovo">Novo</a>-->
-    <button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success" data-mdb-modal-init data-mdb-target="#staticBackdrop4"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></button>
+    <!--<a href="${pageContext.request.contextPath}/LaboratorioNovo" data-mdb-button-init data-mdb-ripple-init class="btn btn-success" data-mdb-modal-init data-mdb-target="#staticBackdrop4"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></a>-->
+    <a href="${pageContext.request.contextPath}/LaboratorioNovo" class="btn btn-success"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></a>
+
+    <!--<button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success" data-mdb-modal-init data-mdb-target="#staticBackdrop4"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></button>-->
 </div>
 <div class="">
     <table id="example" class="table table-striped" style="width:100%">
         <thead>
             <tr>
                 <th>id</th>
-                <th>numero</th>
+                <th>numero sala</th>
                 <th>Qtd. Computadores</th>
                 <th></th>
                 <th></th>
@@ -37,7 +41,7 @@
                 </td>
                 <td align="center">
                     <a href="${pageContext.request.contextPath}/LaboratorioExcluir?idLaboratorio=${laboratorio.idLaboratorio}">
-                        <button class="btn btn-group-lg btn-danger"
+                        <button class="btn btn-group-lg
                             <c:out value="${laboratorio.status == 'A' ? 'btn-danger' :'btn-success'}"/>"
                         >
                             <c:out value="${laboratorio.status  == 'A' ? 'Inativar' :'Ativar'}"/>
@@ -47,16 +51,6 @@
             </tr>
         </c:forEach>
         </tbody>
-        <tfoot>
-            <tr>
-                <th>Seq.</th>
-                <th>Name</th>
-                <th>Position</th>
-                <th>Office</th>
-                <th>Start date</th>
-                <th>Salary</th>
-            </tr>
-        </tfoot>
     </table>
           
 
@@ -101,6 +95,15 @@
     
     </div>
                             
+<script>
+    window.onload = function () {
+        const showModal = '<%= request.getAttribute("showModal") %>';
+        if (showModal === 'true') {
+            const myModal = new bootstrap.Modal(document.getElementById('staticBackdrop4'));
+            myModal.show();
+        }
+    };
+</script>
 
         
 <%@include file="/footer.jsp" %>

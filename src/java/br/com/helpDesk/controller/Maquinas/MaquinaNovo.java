@@ -2,7 +2,9 @@
 package br.com.helpDesk.controller.Maquinas;
 
 
+import br.com.helpDesk.dao.GenericDAO;
 import br.com.helpDesk.dao.LaboratorioDAO;
+import br.com.helpDesk.dao.MaquinaDAO;
 import br.com.helpDesk.model.Maquina;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -26,12 +28,14 @@ public class MaquinaNovo extends HttpServlet {
         if(idLab != null){
            request.setAttribute("idLaboratorio", idLab);
         }
-        
+          GenericDAO dao = new MaquinaDAO();
         Maquina oMaquina = new Maquina();
         request.setAttribute("maquina", oMaquina);
+        request.setAttribute("maquinas", dao.listar());
         LaboratorioDAO oLaboratorioDAO = new LaboratorioDAO();
         request.setAttribute("laboratorios", oLaboratorioDAO.listar());
-        request.getRequestDispatcher("/cadastros/maquina/maquinaCadastrar.jsp").forward(request, response);
+        request.setAttribute("showModal", "true");
+        request.getRequestDispatcher("/cadastros/maquina/maquina.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
