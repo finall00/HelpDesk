@@ -25,6 +25,7 @@ public class TicketCarregar extends HttpServlet {
             request.setAttribute("laboratorios", oLaboratorioDAO.listar());
             DocenteDAO oDocenteDAO = new DocenteDAO();
             request.setAttribute("docentes", oDocenteDAO.listar());
+            request.setAttribute("showModal", "true");
             request.getRequestDispatcher("/cadastros/ticket/ticketCadastrar.jsp").forward(request, response);
         }catch (Exception ex){
             System.out.println("Erro carrregar ticket "+ex.getMessage());

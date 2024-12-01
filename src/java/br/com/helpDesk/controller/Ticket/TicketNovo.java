@@ -1,7 +1,9 @@
 package br.com.helpDesk.controller.Ticket;
 
 import br.com.helpDesk.dao.DocenteDAO;
+import br.com.helpDesk.dao.GenericDAO;
 import br.com.helpDesk.dao.LaboratorioDAO;
+import br.com.helpDesk.dao.TicketDAO;
 import br.com.helpDesk.model.Ticket;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -18,13 +20,16 @@ public class TicketNovo extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
         try {
+            GenericDAO dao = new TicketDAO();
+            request.setAttribute("tickets", dao.listar());
             Ticket oTicket = new Ticket();
             request.setAttribute("ticket", oTicket);
             LaboratorioDAO oLaboratorioDAO = new LaboratorioDAO();
             request.setAttribute("laboratorios", oLaboratorioDAO.listar());
             DocenteDAO oDocenteDAO = new DocenteDAO();
             request.setAttribute("docentes", oDocenteDAO.listar());
-            request.getRequestDispatcher("/cadastros/ticket/ticketCadastrar.jsp").forward(request, response);
+            request.setAttribute("showModal", "true");
+            request.getRequestDispatcher("/cadastros/ticket/ticket.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Problema na Servelet de novo ticket! Erro: "+ e.getMessage());
             e.printStackTrace();

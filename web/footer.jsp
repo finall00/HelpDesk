@@ -24,7 +24,10 @@
 
     
     <script>
-        new DataTable('#example');
+        new DataTable('#example', {
+             scrollY: 480,
+             scrollCollapse: true
+        });
     </script>
     <!-- MDB -->
         <script
