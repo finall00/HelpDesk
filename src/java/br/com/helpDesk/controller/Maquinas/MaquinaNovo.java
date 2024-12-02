@@ -30,10 +30,11 @@ public class MaquinaNovo extends HttpServlet {
         if(idLaboratorio != null){
            request.setAttribute("idLab", idLaboratorio);
            request.setAttribute("showModalVizualizar", "true");
-            request.setAttribute("maquina", oMaquina);
-            request.setAttribute("maquinas", dao.listar());
+           request.setAttribute("maquina", oMaquina);
+           request.setAttribute("maquinas", dao.listar());
            request.setAttribute("laboratorios", oLaboratorioDAO.listar());
            request.getRequestDispatcher("/cadastros/laboratorio/laboratorioVisualizar.jsp").forward(request, response);
+//           response.sendRedirect("LaboratorioVisualizar?idLaboratorio="+idLaboratorio);
         }else{
             request.setAttribute("maquina", oMaquina);
             request.setAttribute("maquinas", dao.listar());

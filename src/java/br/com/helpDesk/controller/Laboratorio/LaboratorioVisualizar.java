@@ -26,7 +26,6 @@ public class LaboratorioVisualizar extends HttpServlet {
 
             MaquinaDAO oMaquinaDAO = new MaquinaDAO();
             request.setAttribute("maquinas", oMaquinaDAO.listar(idLaboratorio));
-
             request.getRequestDispatcher("cadastros/laboratorio/laboratorioVisualizar.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Problema no servlet de carregar laboratorio! Erro: " + e.getMessage());

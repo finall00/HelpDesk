@@ -41,7 +41,7 @@
                 <td align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${ticket.dataCriação}"/></td>
                 <td align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${ticket.dataEncerramento}"/></td>
                 <td align="left">${ticket.status}</td>
-                <td align="left"><img src="${ticket.imagem}" height="100" width="200" /></td>
+                <td align="left"><img src="${ticket.imagem}" height="100" width="200"  style="cursor: pointer;" /></td>
                 <td align="center">
                     <a href="${pageContext.request.contextPath}/TicketExcluir?idTicket=${ticket.idTicket}">
                         <button class="btn btn-group-lg
@@ -75,6 +75,7 @@
                         <center>
                             <img alt="imagem" class="img-thumbnail" 
                                  src="${ticket.imagem}" 
+                                
                                  name="target" id="target" width="250" heigth="250">
                             <br><br>
                             <input type="file" id="gallery-photo-add" 
@@ -133,6 +134,17 @@
             </div>
         </div>
     </div>
+                            
+<!-- Modal para Exibir a Imagem Ampliada -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" alt="Imagem ampliada" class="img-fluid" style="width: 400px; height: 400px; object-fit: contain;" />
+            </div>
+    </div>
+</div>
+
     
     </div>
                         
@@ -164,6 +176,12 @@
         -webkit-box-shadow: 0px 0px 3px rgba(0,0,0,0.06);
         -moz-box-shadow: 0px 0px 3px rgba(0,0,0,0.06);
         box-shadow: 0px 0px 3px rgba(0,0,0,0.06);
+    }
+    
+      #modalImage {
+         width: 400px;
+        height: 400px;
+        object-fit: contain;
     }
 </style>
                             
@@ -219,6 +237,23 @@ function gravarDados() {
         }
     });
 }
+
+  document.addEventListener("DOMContentLoaded", function () {
+        // Adiciona evento de clique nas células com imagens
+        const imageCells = document.querySelectorAll("td img");
+
+        imageCells.forEach(function (img) {
+            img.addEventListener("click", function () {
+                // Configura a imagem no modal
+                const modalImage = document.getElementById("modalImage");
+                modalImage.src = img.src;
+
+                // Mostra o modal
+                const imageModal = new bootstrap.Modal(document.getElementById("imageModal"));
+                imageModal.show();
+            });
+        });
+    });
 
 </script>
 
