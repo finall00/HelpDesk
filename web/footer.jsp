@@ -3,7 +3,7 @@
                <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Renan e Vaner</span>
+                        <span>Copyright &copy; Renan e Vagner</span>
                     </div>
                 </div>
             </footer>
