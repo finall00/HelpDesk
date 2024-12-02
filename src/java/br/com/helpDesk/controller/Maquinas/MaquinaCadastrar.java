@@ -44,7 +44,7 @@ public class MaquinaCadastrar extends HttpServlet {
             request.setAttribute("mensagem", mensagem);
             
 //            response.sendRedirect("MaquinaListar");
-              response.sendRedirect('');
+              response.sendRedirect("LaboratorioVisualizar?idLaboratorio="+oMaquina.getLaboratorio().getIdLaboratorio());
 
         } catch (Exception ex){
             System.out.println("Problemas no Servlet ao cadastrar Maquina! Erro: "+ex.getMessage());
