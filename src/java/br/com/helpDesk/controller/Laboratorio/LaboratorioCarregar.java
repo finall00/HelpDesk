@@ -37,7 +37,8 @@ public class LaboratorioCarregar extends HttpServlet {
         try {
             GenericDAO dao = new LaboratorioDAO();
             request.setAttribute("laboratorio", dao.carregar(idLaboratorio));
-            request.getRequestDispatcher("cadastros/laboratorio/laboratorioCadastrar.jsp").forward(request, response);
+            request.setAttribute("showModal", "true");
+            request.getRequestDispatcher("/cadastros/laboratorio/laboratorio.jsp").forward(request, response);
         } catch (Exception e) {
             System.out.println("Problema no servlet de carregar laboratorio! Erro: "+ e.getMessage());
         }

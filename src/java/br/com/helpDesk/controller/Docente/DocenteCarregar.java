@@ -21,7 +21,8 @@ public class DocenteCarregar extends HttpServlet {
           try {
             GenericDAO dao = new DocenteDAO();
             request.setAttribute("docente", dao.carregar(idDocente));
-            request.getRequestDispatcher("/cadastros/docente/docenteCadastrar.jsp").forward(request, response);
+            request.setAttribute("showModal", "true");
+            request.getRequestDispatcher("/cadastros/docente/docente.jsp").forward(request, response);
             } catch (Exception e) {
                 System.out.println("Problemas ao carregar dados do docente!"+e.getMessage());
                 e.printStackTrace();

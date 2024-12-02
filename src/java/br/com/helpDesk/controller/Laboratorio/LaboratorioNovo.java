@@ -4,6 +4,8 @@
  */
 package br.com.helpDesk.controller.Laboratorio;
 
+import br.com.helpDesk.dao.GenericDAO;
+import br.com.helpDesk.dao.LaboratorioDAO;
 import br.com.helpDesk.model.Laboratorio;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -32,9 +34,12 @@ public class LaboratorioNovo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
+        GenericDAO dao = new LaboratorioDAO();
         Laboratorio oLaboratorio = new Laboratorio();
         request.setAttribute("laboratorio", oLaboratorio);
-        request.getRequestDispatcher("/cadastros/laboratorio/laboratorioCadastrar.jsp").forward(request, response);
+        request.setAttribute("laboratorios", dao.listar());
+        request.setAttribute("showModal", "true");
+        request.getRequestDispatcher("/cadastros/laboratorio/laboratorio.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

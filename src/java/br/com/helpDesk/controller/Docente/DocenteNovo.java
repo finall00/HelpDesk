@@ -1,5 +1,7 @@
 package br.com.helpDesk.controller.Docente;
 
+import br.com.helpDesk.dao.DocenteDAO;
+import br.com.helpDesk.dao.GenericDAO;
 import br.com.helpDesk.model.Docente;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -15,9 +17,18 @@ public class DocenteNovo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=iso-8859-1");
-        Docente oDocente = new Docente();
-        request.setAttribute("docente", oDocente);
-        request.getRequestDispatcher("/cadastros/docente/docenteCadastrar.jsp").forward(request, response);
+           try {
+                GenericDAO dao = new DocenteDAO();
+                Docente oDocente = new Docente();
+                request.setAttribute("docente", oDocente);
+                request.setAttribute("docentes", dao.listar());
+                request.setAttribute("showModal", "true");
+                request.getRequestDispatcher("/cadastros/docente/docente.jsp").forward(request, response);
+        } catch (Exception ex) {
+            System.out.println("Problemas no servelet ao novo docente !Erro:"+ex.getMessage());
+            ex.printStackTrace();
+        }
+      
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

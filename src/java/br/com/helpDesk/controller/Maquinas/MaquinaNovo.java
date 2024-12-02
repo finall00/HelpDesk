@@ -2,7 +2,9 @@
 package br.com.helpDesk.controller.Maquinas;
 
 
+import br.com.helpDesk.dao.GenericDAO;
 import br.com.helpDesk.dao.LaboratorioDAO;
+import br.com.helpDesk.dao.MaquinaDAO;
 import br.com.helpDesk.model.Maquina;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,17 +23,26 @@ public class MaquinaNovo extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=iso-8859-1");
-        
-        String idLab = request.getParameter("laboratorioId");
-        if(idLab != null){
-           request.setAttribute("idLaboratorio", idLab);
-        }
-        
-        Maquina oMaquina = new Maquina();
-        request.setAttribute("maquina", oMaquina);
         LaboratorioDAO oLaboratorioDAO = new LaboratorioDAO();
-        request.setAttribute("laboratorios", oLaboratorioDAO.listar());
-        request.getRequestDispatcher("/cadastros/maquina/maquinaCadastrar.jsp").forward(request, response);
+         Maquina oMaquina = new Maquina();
+         GenericDAO dao = new MaquinaDAO();
+        String idLaboratorio = request.getParameter("laboratorioId");
+        if(idLaboratorio != null){
+           request.setAttribute("idLab", idLaboratorio);
+           request.setAttribute("showModalVizualizar", "true");
+           request.setAttribute("maquina", oMaquina);
+           request.setAttribute("maquinas", dao.listar());
+           request.setAttribute("laboratorios", oLaboratorioDAO.listar());
+           request.getRequestDispatcher("/cadastros/laboratorio/laboratorioVisualizar.jsp").forward(request, response);
+//           response.sendRedirect("LaboratorioVisualizar?idLaboratorio="+idLaboratorio);
+        }else{
+            request.setAttribute("maquina", oMaquina);
+            request.setAttribute("maquinas", dao.listar());
+            request.setAttribute("laboratorios", oLaboratorioDAO.listar());
+            request.setAttribute("showModal", "true");
+            request.getRequestDispatcher("/cadastros/maquina/maquina.jsp").forward(request, response);
+        }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

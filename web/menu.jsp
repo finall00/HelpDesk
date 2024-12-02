@@ -1,5 +1,5 @@
 <div id="wrapper">
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
@@ -38,8 +38,8 @@
                         <h6 class="collapse-header">Cadastros</h6>
                         <a class="collapse-item" href="${pageContext.request.contextPath}/LaboratorioListar">Laboratorio</a>
                         <a class="collapse-item" href="${pageContext.request.contextPath}/MaquinaListar">Maquinas</a>
-                        <a class="collapse-item" href="#">Docente</a>
-                        <a class="collapse-item" href="${pageContext.request.contextPath}/DocenteListar">Ticket</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/DocenteListar">Docente</a>
+                        <a class="collapse-item" href="${pageContext.request.contextPath}/TicketListar">Ticket</a>
                     </div>
                 </div>
             </li>
