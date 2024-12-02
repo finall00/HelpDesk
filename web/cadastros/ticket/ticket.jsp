@@ -48,7 +48,7 @@
                             <c:out value="${ticket.status == 'A' ? 'btn-danger' :'btn-success'}"/>"
                             ${ticket.status == 'I' ? 'disabled' : ''}
                         >
-                        <c:out value="${ticket.status  == 'A' ? 'Inativar' :'Ticket encerrado'}"/>
+                        <c:out value="${ticket.status  == 'A' ? 'Finalizar' :'Ticket encerrado'}"/>
                     </button>
                     </a>
                 </td>

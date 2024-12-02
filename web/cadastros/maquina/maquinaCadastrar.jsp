@@ -5,10 +5,12 @@
 
 <div class="container mt-5">
 
-    <a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/MaquinaListar">
+<!--    <a class="btn btn-secondary mb-5" href="${pageContext.request.contextPath}/MaquinaListar">
         <i class="fas fa-undo-alt"></i>
         <strong>Voltar</strong>
-    </a>
+    </a>-->
+    <button class="btn btn-secondary mb-4" onclick="history.back()">Voltar</button>
+
 
     <form name="cadastrarmaquina" action="MaquinaCadastrar" method="POST">
         <div class="card">

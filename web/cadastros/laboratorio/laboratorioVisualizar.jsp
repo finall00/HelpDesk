@@ -7,6 +7,7 @@
 <h1 class="h3 mb-4 p-2 text-gray-800 text-center">Laboratorio vizualizar</h1>
 <a href="index.jsp" class="btn btn-success mb-4"><i class="fas fa-home fa-fw"></i> Voltar à página Inicial</a>
 <a href="${pageContext.request.contextPath}/MaquinaNovo?laboratorioId=${laboratorio.idLaboratorio}" class="btn btn-success mb-4"><i class="fas fa-plus fa-fw"></i> Adicionar Nova Máquina</a>
+<button class="btn btn-success mb-4" onclick="history.back()">Voltar</button>
 
 <div class="d-flex justify-content-between mb-4">
     <p class="p-2 h4">Máquinas no Laboratório: ${laboratorio.numeroSala}</p>

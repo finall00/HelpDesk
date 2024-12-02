@@ -7,10 +7,12 @@
     <h1 class="h3 mb-2 text-gray-800">Tickets</h1>
          
     <p class="mb-4">Formulário de Cadastro</p>
-    <a class="btn btn-secondary mb-4" href="${pageContext.request.contextPath}/TicketListar">
+<!--    <a class="btn btn-secondary mb-4" href="${pageContext.request.contextPath}/TicketListar">
         <i class="fas fa-undo-alt"></i>
         <strong>Voltar</strong>
-    </a>
+    </a>-->
+    <button class="btn btn-secondary mb-4" onclick="history.back()">Voltar</button>
+
     <div class="row">
         <div class="col">
             <div class="card shadow mb-4"> 
