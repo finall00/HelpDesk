@@ -42,7 +42,10 @@ public class MaquinaCadastrar extends HttpServlet {
                 mensagem = "Problemas ao cadastrar Maquina. Verique os dados informados e tente novamente!";
             }
             request.setAttribute("mensagem", mensagem);
-            response.sendRedirect("MaquinaListar");
+            
+//            response.sendRedirect("MaquinaListar");
+              response.sendRedirect('');
+
         } catch (Exception ex){
             System.out.println("Problemas no Servlet ao cadastrar Maquina! Erro: "+ex.getMessage());
             ex.printStackTrace();

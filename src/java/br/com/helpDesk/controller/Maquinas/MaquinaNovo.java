@@ -34,7 +34,7 @@ public class MaquinaNovo extends HttpServlet {
            request.setAttribute("maquinas", dao.listar());
            request.setAttribute("laboratorios", oLaboratorioDAO.listar());
            request.getRequestDispatcher("/cadastros/laboratorio/laboratorioVisualizar.jsp").forward(request, response);
-//           response.sendRedirect("LaboratorioVisualizar?idLaboratorio="+idLaboratorio);
+//           response.sendRedirect("LaboratorioVisualizar?idLaboratorio="+ idLaboratorio);
         }else{
             request.setAttribute("maquina", oMaquina);
             request.setAttribute("maquinas", dao.listar());

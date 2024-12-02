@@ -6,13 +6,13 @@
 
 <h1 class="h3 mb-4 p-2 text-gray-800 text-center">Maquina</h1>
 <a href="index.jsp" class="btn btn-success mb-4"><i class="fas fa-home fa-fw"></i> Voltar à página Inicial</a>
+<button class="btn btn-secondary mb-4" onclick="history.back(2)">Voltar</button>
 <div class="d-flex justify-content-between mb-4">
     <p class="p-2 h4">Maquina</p>
     <!--<a href="${pageContext.request.contextPath}/LaboratorioNovo" class="btn btn-primary">Novo</a>-->
     <!--<a href="${pageContext.request.contextPath}/LaboratorioNovo">Novo</a>-->
     <!--<a href="${pageContext.request.contextPath}/LaboratorioNovo" data-mdb-button-init data-mdb-ripple-init class="btn btn-success" data-mdb-modal-init data-mdb-target="#staticBackdrop4"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></a>-->
     <a href="${pageContext.request.contextPath}/MaquinaNovo" class="btn btn-success"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></a>
-
     <!--<button type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-success" data-mdb-modal-init data-mdb-target="#staticBackdrop4"><i class='bx bx-plus bx-flip-horizontal iconec' style="color: white;" ></i></button>-->
 </div>
 <div class="">
@@ -29,24 +29,24 @@
         </thead>
         <tbody>
             <c:forEach var="maquina" items="${maquinas}">
-            <tr>
-                <td>${maquina.idMaquina}</td>
-                <td>${maquina.numeroMaquina}</td>
-                <td>${maquina.OS}</td>
-                <td>LAB ${maquina.laboratorio.numeroSala}</td>
-                <td align="center">
-                    <a href="${pageContext.request.contextPath}/MaquinaExcluir?idMaquina=${maquina.idMaquina}">
-                        <i class='bx bx-trash iconec'></i>
-                    </a>
-                </td>
-                <td align="center">
-                    <a href="${pageContext.request.contextPath}/MaquinaCarregar?idMaquina=${maquina.idMaquina}"><i class="bx bx-edit-alt iconec"></i></i></a>
-                </td>
-            </tr>
-        </c:forEach>
+                <tr>
+                    <td>${maquina.idMaquina}</td>
+                    <td>${maquina.numeroMaquina}</td>
+                    <td>${maquina.OS}</td>
+                    <td>LAB ${maquina.laboratorio.numeroSala}</td>
+                    <td align="center">
+                        <a href="${pageContext.request.contextPath}/MaquinaExcluir?idMaquina=${maquina.idMaquina}">
+                            <i class='bx bx-trash iconec'></i>
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a href="${pageContext.request.contextPath}/MaquinaCarregar?idMaquina=${maquina.idMaquina}"><i class="bx bx-edit-alt iconec"></i></i></a>
+                    </td>
+                </tr>
+            </c:forEach>
         </tbody>
     </table>
-          
+
 
 
     <div class="modal fade" id="staticBackdrop4" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
@@ -57,7 +57,7 @@
                     <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn-close" data-mdb-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body p-4">
-                <form name="cadastrarmaquina" action="MaquinaCadastrar" method="POST">
+                    <form name="cadastrarmaquina" action="MaquinaCadastrar" method="POST">
                         <div data-mdb-input-init class="form-outline mb-4">
                             <input type="text" name="idmaquina" id="idmaquina" value="${maquina.idMaquina}" readonly="readonly" class="form-control" />
                             <label class="form-label" for="name4">ID</label>
@@ -75,9 +75,9 @@
                             <select class="custom-select" name="idlaboratorio" id="idlaboratorio" required>
                                 <option value="">Selecione</option>
                                 <c:forEach var="laboratorio" items="${laboratorios}">
-                                     <option value="${laboratorio.idLaboratorio}" ${maquina.laboratorio.idLaboratorio == laboratorio.idLaboratorio || idLaboratorio == laboratorio.idLaboratorio ? "selected": ""}>
-                                          ${laboratorio.numeroSala}
-                                     </option>
+                                    <option value="${laboratorio.idLaboratorio}" ${maquina.laboratorio.idLaboratorio == laboratorio.idLaboratorio || idLaboratorio == laboratorio.idLaboratorio ? "selected": ""}>
+                                        ${laboratorio.numeroSala}
+                                    </option>
                                 </c:forEach>
                             </select>
                         </div>
@@ -90,12 +90,12 @@
             </div>
         </div>
     </div>
-    
-    </div>
-                            
+
+</div>
+
 <script>
     window.onload = function () {
-        const showModal = '<%= request.getAttribute("showModal") %>';
+        const showModal = '<%= request.getAttribute("showModal")%>';
         if (showModal === 'true') {
             const myModal = new bootstrap.Modal(document.getElementById('staticBackdrop4'));
             myModal.show();
@@ -103,5 +103,5 @@
     };
 </script>
 
-        
+
 <%@include file="/footer.jsp" %>

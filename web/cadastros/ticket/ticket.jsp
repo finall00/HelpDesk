@@ -25,7 +25,6 @@
                 <th>Docente</th>
                 <th>Data-Criação</th>
                 <th>Data-encerramento</th>
-                <th>Status</th>
                 <th>Imagem</th>
                 <th></th>
                 <th></th>
@@ -40,13 +39,13 @@
                 <td>${ticket.docente.nomePessoa}</td>
                 <td align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${ticket.dataCriação}"/></td>
                 <td align="center"><fmt:formatDate pattern="dd/MM/yyyy" value="${ticket.dataEncerramento}"/></td>
-                <td align="left">${ticket.status}</td>
+              
                 <td align="left"><img src="${ticket.imagem}" height="100" width="200"  style="cursor: pointer;" /></td>
                 <td align="center">
-                    <a href="${pageContext.request.contextPath}/TicketExcluir?idTicket=${ticket.idTicket}">
+                    <a  ${ticket.status == 'I' ? ' style="pointer-events: none"' : ''} href="${pageContext.request.contextPath}/TicketExcluir?idTicket=${ticket.idTicket}">
                         <button class="btn btn-group-lg
                             <c:out value="${ticket.status == 'A' ? 'btn-danger' :'btn-success'}"/>"
-                            ${ticket.status == 'I' ? 'disabled' : ''}
+                           
                         >
                         <c:out value="${ticket.status  == 'A' ? 'Finalizar' :'Ticket encerrado'}"/>
                     </button>
